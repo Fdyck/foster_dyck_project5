@@ -8,9 +8,11 @@ class Sentiment extends Component {
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the sentiment data
             sentiment: "",
-            neutral: "",
-            positive: "",
-            negative: "",
+            values: {
+                neutral: "",
+                positive: "",
+                negative: "",
+            }
         }
     }
     componentDidMount() {
@@ -29,17 +31,12 @@ class Sentiment extends Component {
         }).then((response) => {
             //SPECIFIES OUR DATA TO THE AREA WE NEED
             let sentiment = response.data.sentiment;
-            //SINCE THIS CONSOLE LOG RETURNS PROPER VALUES MAYBE I CAN JUST SET IT TO BE NEGATIVE?
-            let neutral = response.data.probabilities.neutral;
-            let positive = response.data.probabilities.positive;
-            let negative = response.data.probabilities.negative;
+            let values = response.data.probabilities;
 
             //SETS THE STATE TO OUR DATA      
             this.setState({
                 sentiment: sentiment,
-                neutral: neutral,
-                positive: positive,
-                negative: negative
+                values: values
             })
         })
     }
@@ -47,9 +44,9 @@ class Sentiment extends Component {
         return (
             <div className="Sentiment">
                 <p>{this.state.sentiment}</p>
-                <p>Your tweet is {this.state.neutral} neutral</p>
-                <p>Your tweet is {this.state.positive} positive</p>
-                <p>Your tweet is {this.state.negative} negative</p>
+                <p>Your tweet is {this.state.values.neutral} neutral</p>
+                <p>Your tweet is {this.state.values.positive} positive</p>
+                <p>Your tweet is {this.state.values.negative} negative</p>
                 
             </div>
         );
