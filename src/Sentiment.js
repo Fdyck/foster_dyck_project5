@@ -7,8 +7,8 @@ class Sentiment extends Component {
         super();
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the sentiment data
-            //CAN I JUST FEED IN THE PROBABILITIES HERE AND NOT WORRY ABOUT THEM BEING AN OBJECT?
-            sentiment: [],
+            sentiment: "",
+            negative: "",
         }
     }
     componentDidMount() {
@@ -26,11 +26,14 @@ class Sentiment extends Component {
             }
         }).then((response) => {
             //SPECIFIES OUR DATA TO THE AREA WE NEED
-            response = response.data;
+            let sentiment = response.data.sentiment;
+            //SINCE THIS CONSOLE LOG RETURNS PROPER VALUES MAYBE I CAN JUST SET IT TO BE NEGATIVE?
+            let neutral = response.data.probabilities.neutral;
 
             //SETS THE STATE TO OUR DATA      
             this.setState({
-                sentiment: response
+                sentiment: sentiment,
+                neutral: neutral,
             })
         })
     }
@@ -38,6 +41,7 @@ class Sentiment extends Component {
         return (
             <div className="Sentiment">
                 <p>{this.state.sentiment.sentiment}</p>
+                {/* <p>{this.state.sentiment.probabilities.neutral}</p> */}
                 {/* <p>Your tweet is {this.state.sentiment.probabilities.negative}</p>
             MAYBE TRY OBJECT.keys(object).map.... */}
             </div>

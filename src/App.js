@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
 import Sentiment from './Sentiment.js'
 
 //I need to take information from the user
@@ -12,41 +11,7 @@ import Sentiment from './Sentiment.js'
 
 class App extends Component {
   
-  //CREATE A CONSTRUCTOR SO WE CAN HAVE STATE, THIS IS NEEDED TO INCLUDE SUPER WHICH IS NEEDED TO HAVE STATE
-  
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     //CREATE AND EMPTY ARRAY TO HOLD THE ART WE ARE GOING TO GET
-  //     sentiment: [],
-  //     emotion: [],
-  //     abuse: [],
-  //     person: []
-  //   }
-  // }
-  // componentDidMount() {
-  //   const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-  //   const userInput = prompt() 
-
-  //   //WE MAKE THE AJAX REQUEST USING AXIOS TO OUR ALIEN DATABASE
-  //   //SENTIMENT ANALYSIS
-  //   axios({
-  //     method: 'POST',
-  //     url: "https://apis.paralleldots.com/v3/sentiment",
-  //     dataResponse: 'json',
-  //       params: {
-  //         text: `${userInput}`,
-  //         api_key: apiKey,
-  //       }
-  //   }).then((response) => {
-  //     //SPECIFIES OUR DATA TO THE AREA WE NEED
-  //     response = response.data;
-      
-  //     //SETS THE STATE TO OUR DATA      
-  //     this.setState({
-  //       sentiment: response
-  //     })
-  //   })
+//DO I NEED A CONSTRUCTOR TO ALLOW THIS TO HAVE A USER INPUT STATE PASSED TO ALL COMPONENTS?
 
   //   //EMOTION ANALYSIS
   //   axios({
