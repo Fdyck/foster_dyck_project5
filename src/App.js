@@ -61,4 +61,6 @@ export default App;
 
 //if there is time go back and write a function for the axios call that you can just pass paramaters to and then feed into each component to make code a lot more DRY.
 
+//DO I HAVE TO MAKE THE AXIO CALL IN A SEPERATE FUNCTION IN THE SCOPE OF USERINPUT AND THEN PASS ITS VALUE TO THE COMPONENT? EITHER WAY HOW DO I PASS A VALUE FROM PARENT TO THE COMPONENT BEFORE IT RENDERS
+
 // MAKE THE ENTIRE COMPONENT NOT SHOW UNTIL THE SUBMIT BUTTON IS CLICKED
