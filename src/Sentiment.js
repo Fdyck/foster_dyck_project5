@@ -6,6 +6,7 @@ class Sentiment extends Component {
     constructor() {
         super();
         this.state = {
+            
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
             sentiment: "",
             values: {
@@ -16,9 +17,8 @@ class Sentiment extends Component {
         }
     }
     componentDidMount() {
-        const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-        const userInput = prompt()
-
+        const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`;
+        const userInput = prompt();
         //SENTIMENT ANALYSIS
         axios({
             method: 'POST',
