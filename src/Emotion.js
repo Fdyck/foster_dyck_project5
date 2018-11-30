@@ -3,25 +3,25 @@ import axios from 'axios';
 
 
 class Emotion extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
             emotion: "",
-            values: []
+            values: [],
+            userInput: this.props.userInput,
         }
     }
     componentDidMount() {
         const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-        const userInput = prompt()
 
-        //SENTIMENT ANALYSIS
+        //Emotion ANALYSIS
         axios({
             method: 'POST',
             url: "https://apis.paralleldots.com/v3/emotion",
             dataResponse: 'json',
             params: {
-                text: `${userInput}`,
+                text: `${this.state.userInput}`,
                 api_key: apiKey,
             }
         }).then((response) => {
@@ -44,7 +44,7 @@ class Emotion extends Component {
                 <p>{this.state.emotion}</p>
                 {this.state.values.map( emotions => {
                     return(
-                        <p>{emotions[0]} = {emotions[1]}</p>
+                        <p>{emotions[0]} = {Math.round(emotions[1] * 100)}%</p>
                     )
                 })}
                 

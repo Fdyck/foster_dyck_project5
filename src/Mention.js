@@ -3,17 +3,17 @@ import axios from 'axios';
 
 
 class Mention extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
             name: "",
             category: "",
+            userInput: this.props.userInput,
         }
     }
     componentDidMount() {
         const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-        const userInput = prompt()
 
         //SENTIMENT ANALYSIS
         axios({
@@ -21,7 +21,7 @@ class Mention extends Component {
             url: "https://apis.paralleldots.com/v3/ner",
             dataResponse: 'json',
             params: {
-                text: `${userInput}`,
+                text: `${this.state.userInput}`,
                 api_key: apiKey,
             }
         }).then((response) => {
@@ -42,7 +42,7 @@ class Mention extends Component {
             <div className="Mention">
                 <h2>Mention Identifier</h2>
                 { toggleAlert
-                    ? <p>Does {this.state.name} have Twitter? You should tag them!</p>
+                    ? <p>You seem to mention {this.state.name} if they have twitter you should think about tagging them.</p>
                     : <p>No incorrect mentions indetified</p>
                 }
             </div>

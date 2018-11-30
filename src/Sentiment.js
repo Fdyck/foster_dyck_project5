@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 class Sentiment extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
@@ -13,19 +13,19 @@ class Sentiment extends Component {
                 neutral: "",
                 positive: "",
                 negative: "",
-            }
+            },
+            userInput: this.props.userInput,
         }
     }
     componentDidMount() {
         const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`;
-        const userInput = prompt();
         //SENTIMENT ANALYSIS
         axios({
             method: 'POST',
             url: "https://apis.paralleldots.com/v3/sentiment",
             dataResponse: 'json',
             params: {
-                text: `${userInput}`,
+                text: `${this.state.userInput}`,
                 api_key: apiKey,
             }
         }).then((response) => {
@@ -45,9 +45,9 @@ class Sentiment extends Component {
             <div className="Sentiment">
                 <h2>SENTIMENT</h2>
                 <p>{this.state.sentiment}</p>
-                <p>Your tweet is {this.state.values.neutral} neutral</p>
-                <p>Your tweet is {this.state.values.positive} positive</p>
-                <p>Your tweet is {this.state.values.negative} negative</p>
+                <p>Your tweet is {Math.round(this.state.values.neutral * 100)}% neutral</p>
+                <p>Your tweet is {Math.round(this.state.values.positive * 100)}% positive</p>
+                <p>Your tweet is {Math.round(this.state.values.negative * 100)}% negative</p>
                 
             </div>
         );

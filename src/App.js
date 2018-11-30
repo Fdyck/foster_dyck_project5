@@ -36,8 +36,7 @@ class App extends Component {
   }
   render() {
     //PART OF THE PASSING OF THE USER INPUT TO THE COMPONENTS, NOT WORKING AND USING SENTIMENT AS THE EXAMPLE
-    const userInput = this.state.userInput;
-
+    const showResults = this.state.userInput !== "";
     return (
       <div className="App">
         <form action="submit">
@@ -46,10 +45,22 @@ class App extends Component {
           <input onClick={this.showAnalysis} type="submit" value="Enter Tweet" />
         </form>
 {/* //PART OF THE PASSING OF THE USER INPUT TO THE COMPONENTS, NOT WORKING AND USING SENTIMENT AS THE EXAMPLE */}
-        <Sentiment userInput={userInput}/>
-        {/* <Emotion/>
-        <Abuse/>
-        <Mention /> */}
+      { showResults 
+        ? <Sentiment userInput={this.state.userInput}/>
+        : <p>No Sentiment Data</p>
+      }
+      { showResults
+        ? <Emotion userInput={this.state.userInput}/>
+        : <p>No Sentiment Data</p>
+      }
+      { showResults
+        ? <Abuse userInput={this.state.userInput}/>
+        : <p>No Sentiment Data</p>
+      }
+      { showResults
+        ? <Mention userInput={this.state.userInput}/>
+        : <p>No Sentiment Data</p>
+      }
       </div>
     );
   }
@@ -61,6 +72,8 @@ export default App;
 
 //if there is time go back and write a function for the axios call that you can just pass paramaters to and then feed into each component to make code a lot more DRY.
 
-//DO I HAVE TO MAKE THE AXIO CALL IN A SEPERATE FUNCTION IN THE SCOPE OF USERINPUT AND THEN PASS ITS VALUE TO THE COMPONENT? EITHER WAY HOW DO I PASS A VALUE FROM PARENT TO THE COMPONENT BEFORE IT RENDERS. CAN I NOT JUST ADD PROPS TO THE APP.JS THEN PASS THEM THAT WAY?
+// FIGURE OUT HOW TO NEST THE showSentiment CALL
 
 // MAKE THE ENTIRE COMPONENT NOT SHOW UNTIL THE SUBMIT BUTTON IS CLICKED
+
+// MAKE A CLICKABLE PART OF COMPONENT TO SEE THE DRILLED DOWN DATA

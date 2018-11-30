@@ -3,17 +3,17 @@ import axios from 'axios';
 
 
 class Abuse extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
             abuse: "",
             confidence_score: "",
+            userInput: this.props.userInput,
     }
 }
     componentDidMount() {
         const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-        const userInput = prompt()
 
         //SENTIMENT ANALYSIS
         axios({
@@ -21,7 +21,7 @@ class Abuse extends Component {
             url: "https://apis.paralleldots.com/v3/abuse",
             dataResponse: 'json',
             params: {
-                text: `${userInput}`,
+                text: `${this.state.userInput}`,
                 api_key: apiKey,
             }
         }).then((response) => {
@@ -42,8 +42,8 @@ class Abuse extends Component {
             <div className="Abuse">
                 <h2>Abuse</h2>
                 { toggleAlert 
-                    ? <p>We are {this.state.confidence} sure that this statement is {this.state.abuse}</p>
-                    : <p>{this.state.confidence} sure Abuse cleared</p>
+                    ? <p>We are {this.state.confidence}% sure that this statement is abusive.</p>
+                    : <p>{this.state.confidence}% sure this statement is not abusive.</p>
                 }
             </div>
         );
