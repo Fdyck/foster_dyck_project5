@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+//I need to take information from the user
+//Then I need to take the information and run it through an API to check the sentiment and emotion
+// have an abuse alert (seems to over judge some statements, test some on their site to not use calls)
+//Put in a notification so that you know if you inserted a person who is not tagged. (USING THE PERSON CATEGORY AS MEANING YOU HAVE MENTIONED WITHOUT THE @)
+//I then need to display a different page to show you the sentiment of the tweet
+//Then I need to give you an option to change the tweet or start fresh
 
 class App extends Component {
   //CREATE A CONSTRUCTOR SO WE CAN HAVE STATE, THIS IS NEEDED TO INCLUDE SUPER WHICH IS NEEDED TO HAVE STATE
@@ -9,16 +15,18 @@ class App extends Component {
     super();
     this.state = {
       //CREATE AND EMPTY ARRAY TO HOLD THE ART WE ARE GOING TO GET
-      feedback: []
+      sentiment: [],
+      emotion: [],
+      abuse: [],
+      person: []
     }
   }
   componentDidMount() {
     const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
-    const userInput = prompt()
-    
-    //THIS ALLOWS THE USER TO INPUT A DATE
+    const userInput = prompt() 
 
     //WE MAKE THE AJAX REQUEST USING AXIOS TO OUR ALIEN DATABASE
+    //SENTIMENT ANALYSIS
     axios({
       method: 'POST',
       url: "https://apis.paralleldots.com/v3/sentiment",
@@ -31,12 +39,16 @@ class App extends Component {
       //SPECIFIES OUR DATA TO THE AREA WE NEED
       response = response.data
       console.log(response)
-      //SETS TE STATE TO OUR DATA      
-      // this.setState({
-      //   feedback: response
-      // })
+      //SETS THE STATE TO OUR DATA      
+      this.setState({
+        sentiment: response,
+        emotion: [],
+        abuse: [],
+        person: []
+      })
     })
 
+    //EMOTION ANALYSIS
     axios({
       method: 'POST',
       url: "https://apis.paralleldots.com/v3/emotion",
@@ -49,12 +61,13 @@ class App extends Component {
       //SPECIFIES OUR DATA TO THE AREA WE NEED
       response = response.data
       console.log(response)
-      //SETS TE STATE TO OUR DATA      
-      // this.setState({
-      //   feedback: response
-      // })
+      //SETS THE STATE TO OUR DATA      
+      this.setState({
+        emotion: response
+      })
     })
 
+    //ABUSE CHECKER
     axios({
       method: 'POST',
       url: "https://apis.paralleldots.com/v3/abuse",
@@ -67,12 +80,13 @@ class App extends Component {
       //SPECIFIES OUR DATA TO THE AREA WE NEED
       response = response.data
       console.log(response)
-      //SETS TE STATE TO OUR DATA      
-      // this.setState({
-      //   feedback: response
-      // })
+      //SETS THE STATE TO OUR DATA      
+      this.setState({
+        abuse: response
+      })
     })
 
+    //PERSON DETECTOR
     axios({
       method: 'POST',
       url: "https://apis.paralleldots.com/v3/ner",
@@ -85,12 +99,12 @@ class App extends Component {
       //SPECIFIES OUR DATA TO THE AREA WE NEED
       response = response.data
       console.log(response)
-      //SETS TE STATE TO OUR DATA      
-      // this.setState({
-      //   feedback: response
-      // })
+      //SETS THE STATE TO OUR DATA      
+      this.setState({
+        person: response
+      })
     })
-    
+    console.log(this.state)
   }
 
   render() {
