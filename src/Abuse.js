@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-class Sentiment extends Component {
+class Abuse extends Component {
     constructor() {
         super();
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
-            sentiment: "",
-            values: {
-                neutral: "",
-                positive: "",
-                negative: "",
-            }
-        }
+            abuse: "",
+            confidence_score: "",
     }
+}
     componentDidMount() {
         const apiKey = `xztfFPMQl2NLEniIyfqQY2wLcO1YRJrlFj1zwEp7eTc`
         const userInput = prompt()
@@ -22,7 +18,7 @@ class Sentiment extends Component {
         //SENTIMENT ANALYSIS
         axios({
             method: 'POST',
-            url: "https://apis.paralleldots.com/v3/sentiment",
+            url: "https://apis.paralleldots.com/v3/abuse",
             dataResponse: 'json',
             params: {
                 text: `${userInput}`,
@@ -30,28 +26,28 @@ class Sentiment extends Component {
             }
         }).then((response) => {
             //SPECIFIES OUR DATA TO THE AREA WE NEED
-            const sentiment = response.data.sentiment;
-            const values = response.data.probabilities;
+            const abuse = response.data.sentence_type;
+            const confidence = Math.round((response.data.confidence_score) * 100);
 
             //SETS THE STATE TO OUR DATA      
             this.setState({
-                sentiment,
-                values
+                abuse,
+                confidence
             })
         })
     }
     render() {
+        const toggleAlert = this.state.abuse === "Abusive"
         return (
-            <div className="Sentiment">
-                <h2>SENTIMENT</h2>
-                <p>{this.state.sentiment}</p>
-                <p>Your tweet is {this.state.values.neutral} neutral</p>
-                <p>Your tweet is {this.state.values.positive} positive</p>
-                <p>Your tweet is {this.state.values.negative} negative</p>
-                
+            <div className="Abuse">
+                <h2>Abuse</h2>
+                { toggleAlert 
+                    ? <p>We are {this.state.confidence} sure that this statement is {this.state.abuse}</p>
+                    : <p>{this.state.confidence} sure Abuse cleared</p>
+                }
             </div>
         );
     }
 }
 
-export default Sentiment;
+export default Abuse;

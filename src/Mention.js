@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-class Sentiment extends Component {
+class Mention extends Component {
     constructor() {
         super();
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
-            sentiment: "",
-            values: {
-                neutral: "",
-                positive: "",
-                negative: "",
-            }
+            name: "",
+            category: "",
         }
     }
     componentDidMount() {
@@ -22,7 +18,7 @@ class Sentiment extends Component {
         //SENTIMENT ANALYSIS
         axios({
             method: 'POST',
-            url: "https://apis.paralleldots.com/v3/sentiment",
+            url: "https://apis.paralleldots.com/v3/ner",
             dataResponse: 'json',
             params: {
                 text: `${userInput}`,
@@ -30,28 +26,28 @@ class Sentiment extends Component {
             }
         }).then((response) => {
             //SPECIFIES OUR DATA TO THE AREA WE NEED
-            const sentiment = response.data.sentiment;
-            const values = response.data.probabilities;
-
+            const name = response.data.entities[0].name
+            const category = response.data.entities[0].category
             //SETS THE STATE TO OUR DATA      
             this.setState({
-                sentiment,
-                values
+                name,
+                category
             })
         })
     }
     render() {
+        //THIS ALLOWS ME TO NOT SHOW ONE STATEMENT UNLESS THERE IS AN IDENTIFIED NAME
+        const toggleAlert = this.state.category === "name";
         return (
-            <div className="Sentiment">
-                <h2>SENTIMENT</h2>
-                <p>{this.state.sentiment}</p>
-                <p>Your tweet is {this.state.values.neutral} neutral</p>
-                <p>Your tweet is {this.state.values.positive} positive</p>
-                <p>Your tweet is {this.state.values.negative} negative</p>
-                
+            <div className="Mention">
+                <h2>Mention Identifier</h2>
+                { toggleAlert
+                    ? <p>Does {this.state.name} have Twitter? You should tag them!</p>
+                    : <p>No incorrect mentions indetified</p>
+                }
             </div>
         );
     }
 }
 
-export default Sentiment;
+export default Mention;

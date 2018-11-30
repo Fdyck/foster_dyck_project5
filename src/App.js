@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sentiment from './Sentiment.js'
+import Sentiment from './Sentiment.js';
+import Emotion from './Emotion.js';
+import Abuse from './Abuse.js';
+import Mention from './Mention.js';
+
+
+
 
 //I need to take information from the user
 //Then I need to take the information and run it through an API to check the sentiment and emotion
@@ -10,72 +16,14 @@ import Sentiment from './Sentiment.js'
 //Then I need to give you an option to change the tweet or start fresh
 
 class App extends Component {
-  
-//DO I NEED A CONSTRUCTOR TO ALLOW THIS TO HAVE A USER INPUT STATE PASSED TO ALL COMPONENTS?
-
-  //   //EMOTION ANALYSIS
-  //   axios({
-  //     method: 'POST',
-  //     url: "https://apis.paralleldots.com/v3/emotion",
-  //     dataResponse: 'json',
-  //     params: {
-  //       text: `${userInput}`,
-  //       api_key: apiKey,
-  //     }
-  //   }).then((response) => {
-  //     //SPECIFIES OUR DATA TO THE AREA WE NEED
-  //     response = response.data
-  //     console.log(response)
-  //     //SETS THE STATE TO OUR DATA      
-  //     this.setState({
-  //       emotion: response
-  //     })
-  //   })
-
-  //   //ABUSE CHECKER
-  //   axios({
-  //     method: 'POST',
-  //     url: "https://apis.paralleldots.com/v3/abuse",
-  //     dataResponse: 'json',
-  //     params: {
-  //       text: `${userInput}`,
-  //       api_key: apiKey,
-  //     }
-  //   }).then((response) => {
-  //     //SPECIFIES OUR DATA TO THE AREA WE NEED
-  //     response = response.data
-  //     console.log(response)
-  //     //SETS THE STATE TO OUR DATA      
-  //     this.setState({
-  //       abuse: response
-  //     })
-  //   })
-
-  //   //PERSON DETECTOR
-  //   axios({
-  //     method: 'POST',
-  //     url: "https://apis.paralleldots.com/v3/ner",
-  //     dataResponse: 'json',
-  //     params: {
-  //       text: `${userInput}`,
-  //       api_key: apiKey,
-  //     }
-  //   }).then((response) => {
-  //     //SPECIFIES OUR DATA TO THE AREA WE NEED
-  //     response = response.data
-  //     console.log(response)
-  //     //SETS THE STATE TO OUR DATA      
-  //     this.setState({
-  //       person: response
-  //     })
-  //   })
-  //   console.log(this.state)
-  // }
 
   render() {
     return (
       <div className="App">
-        <Sentiment/>
+        {/* <Sentiment/> */}
+        {/* <Emotion/> */}
+        <Abuse/>
+        {/* <Mention /> */}
       </div>
     );
   }

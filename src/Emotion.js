@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-class Sentiment extends Component {
+class Emotion extends Component {
     constructor() {
         super();
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the abusee data, I could let this get created automatically but more clear this way.
-            sentiment: "",
-            values: {
-                neutral: "",
-                positive: "",
-                negative: "",
-            }
+            emotion: "",
+            values: []
         }
     }
     componentDidMount() {
@@ -22,7 +18,7 @@ class Sentiment extends Component {
         //SENTIMENT ANALYSIS
         axios({
             method: 'POST',
-            url: "https://apis.paralleldots.com/v3/sentiment",
+            url: "https://apis.paralleldots.com/v3/emotion",
             dataResponse: 'json',
             params: {
                 text: `${userInput}`,
@@ -30,28 +26,32 @@ class Sentiment extends Component {
             }
         }).then((response) => {
             //SPECIFIES OUR DATA TO THE AREA WE NEED
-            const sentiment = response.data.sentiment;
-            const values = response.data.probabilities;
+           const emotion = response.data.emotion.emotion;
+           let values = response.data.emotion.probabilities;
+           values = Object.entries(values);
 
             //SETS THE STATE TO OUR DATA      
             this.setState({
-                sentiment,
+                emotion,
                 values
             })
         })
     }
     render() {
         return (
-            <div className="Sentiment">
-                <h2>SENTIMENT</h2>
-                <p>{this.state.sentiment}</p>
-                <p>Your tweet is {this.state.values.neutral} neutral</p>
-                <p>Your tweet is {this.state.values.positive} positive</p>
-                <p>Your tweet is {this.state.values.negative} negative</p>
+            <div className="Emotion">
+                <h2>EMOTION</h2>
+                <p>{this.state.emotion}</p>
+                {this.state.values.map( emotions => {
+                    return(
+                        <p>{emotions[0]} = {emotions[1]}</p>
+                    )
+                })}
                 
+
             </div>
         );
     }
 }
 
-export default Sentiment;
+export default Emotion;
