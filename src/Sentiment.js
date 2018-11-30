@@ -8,6 +8,8 @@ class Sentiment extends Component {
         this.state = {
             //CREATE AND EMPTY ARRAY to hold the sentiment data
             sentiment: "",
+            neutral: "",
+            positive: "",
             negative: "",
         }
     }
@@ -29,21 +31,26 @@ class Sentiment extends Component {
             let sentiment = response.data.sentiment;
             //SINCE THIS CONSOLE LOG RETURNS PROPER VALUES MAYBE I CAN JUST SET IT TO BE NEGATIVE?
             let neutral = response.data.probabilities.neutral;
+            let positive = response.data.probabilities.positive;
+            let negative = response.data.probabilities.negative;
 
             //SETS THE STATE TO OUR DATA      
             this.setState({
                 sentiment: sentiment,
                 neutral: neutral,
+                positive: positive,
+                negative: negative
             })
         })
     }
     render() {
         return (
             <div className="Sentiment">
-                <p>{this.state.sentiment.sentiment}</p>
-                {/* <p>{this.state.sentiment.probabilities.neutral}</p> */}
-                {/* <p>Your tweet is {this.state.sentiment.probabilities.negative}</p>
-            MAYBE TRY OBJECT.keys(object).map.... */}
+                <p>{this.state.sentiment}</p>
+                <p>Your tweet is {this.state.neutral} neutral</p>
+                <p>Your tweet is {this.state.positive} positive</p>
+                <p>Your tweet is {this.state.negative} negative</p>
+                
             </div>
         );
     }
