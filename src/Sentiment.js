@@ -43,7 +43,7 @@ class Sentiment extends Component {
     render() {
         return (
             <div className="Sentiment">
-                <h2>SENTIMENT</h2>
+                <h3>Sentiment</h3>
                 <p>{this.state.sentiment}</p>
                 <p>Your tweet is {Math.round(this.state.values.neutral * 100)}% neutral</p>
                 <p>Your tweet is {Math.round(this.state.values.positive * 100)}% positive</p>

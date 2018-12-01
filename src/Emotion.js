@@ -40,7 +40,7 @@ class Emotion extends Component {
     render() {
         return (
             <div className="Emotion">
-                <h2>EMOTION</h2>
+                <h3>Emotion</h3>
                 <p>{this.state.emotion}</p>
                 {this.state.values.map( emotions => {
                     return(

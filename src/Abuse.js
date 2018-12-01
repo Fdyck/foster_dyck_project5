@@ -40,10 +40,9 @@ class Abuse extends Component {
         const toggleAlert = this.state.abuse === "Abusive"
         return (
             <div className="Abuse">
-                <h2>Abuse</h2>
                 { toggleAlert 
-                    ? <p>We are {this.state.confidence}% sure that this statement is abusive.</p>
-                    : <p>{this.state.confidence}% sure this statement is not abusive.</p>
+                    ? <div className="abuseAlert"><h3>Abuse alert</h3><p>We are {this.state.confidence}% sure that this statement is abusive.</p></div>
+                    : <p className="visuallyhidden">{this.state.confidence}% sure this statement is not abusive.</p>
                 }
             </div>
         );

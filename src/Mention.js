@@ -40,10 +40,9 @@ class Mention extends Component {
         const toggleAlert = this.state.category === "name";
         return (
             <div className="Mention">
-                <h2>Mention Identifier</h2>
                 { toggleAlert
-                    ? <p>You seem to mention {this.state.name} if they have twitter you should think about tagging them.</p>
-                    : <p>No incorrect mentions indetified</p>
+                    ? <div className="mentionAlert"><h3>Mention alert.</h3><p>You seem to mention {this.state.name} if they have twitter you should think about tagging them.</p></div>
+                    : <p className="visuallyhidden">No incorrect mentions indetified</p>
                 }
             </div>
         );

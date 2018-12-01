@@ -167,3 +167,49 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 /* SETUP STYLING ENDS */
 html {
   font-size: 62.5%; }
+
+.wrapper {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto; }
+
+h1 {
+  text-align: center;
+  height: 10vh;
+  align-self: center; }
+
+form {
+  text-align: center;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  form textarea {
+    width: 70%;
+    min-width: 20rem;
+    min-height: 20vh;
+    overflow: wrap;
+    resize: none; }
+  form input {
+    width: 35%;
+    min-width: 20rem;
+    min-height: 5vh; }
+
+.results {
+  display: grid;
+  grid-template-columns: 2rem 1fr 1fr 2rem;
+  grid-gap: 1rem; }
+  .results h2 {
+    grid-column: 1 / -1;
+    width: 100%;
+    overflow: wrap;
+    align-self: center; }
+  .results div {
+    width: 100%;
+    text-align: center; }
+    .results div div {
+      width: 100%; }
+
+.userInput {
+  text-align: center; }
