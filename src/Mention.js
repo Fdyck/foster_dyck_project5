@@ -46,7 +46,7 @@ class Mention extends Component {
     render() {
         //THIS ALLOWS ME TO NOT SHOW ONE STATEMENT UNLESS THERE IS AN IDENTIFIED NAME
         const toggleAlert = this.state.category === "name";
-        const toggleIsHidden = this.state.isHidden === false
+        const toggleIsHidden = this.state.isHidden === false;
         return (
             <div className="Mention">
                 {toggleAlert 

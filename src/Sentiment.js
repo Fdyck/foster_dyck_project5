@@ -15,6 +15,7 @@ class Sentiment extends Component {
                 negative: "",
             },
             userInput: this.props.userInput,
+            isHidden: false,
         }
     }
     componentDidMount() {
@@ -40,15 +41,21 @@ class Sentiment extends Component {
             })
         })
     }
+    toggleHidden = () => {
+
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
     render() {
+        const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Sentiment">
+            <div className="Sentiment" onClick={this.toggleHidden}>
                 <h3>Sentiment</h3>
-                <p>{this.state.sentiment}</p>
-                <p>Your tweet is {Math.round(this.state.values.neutral * 100)}% neutral</p>
-                <p>Your tweet is {Math.round(this.state.values.positive * 100)}% positive</p>
-                <p>Your tweet is {Math.round(this.state.values.negative * 100)}% negative</p>
-                
+                { toggleIsHidden 
+                    ? <div className="sentimentSummary"><p>{this.state.sentiment}</p></div>
+                    : <div className="sentimentList"><p>Your tweet is {Math.round(this.state.values.neutral * 100)}% neutral.</p><p>Your tweet is {Math.round(this.state.values.positive * 100)}% positive.</p><p>Your tweet is {Math.round(this.state.values.negative * 100)}% negative.</p></div>
+                }  
             </div>
         );
     }

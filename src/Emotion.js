@@ -10,6 +10,7 @@ class Emotion extends Component {
             emotion: "",
             values: [],
             userInput: this.props.userInput,
+            isHidden: false,
         }
     }
     componentDidMount() {
@@ -37,18 +38,21 @@ class Emotion extends Component {
             })
         })
     }
+    toggleHidden = () => {
+
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
     render() {
+        const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Emotion">
+            <div className="Emotion" onClick={this.toggleHidden}>
                 <h3>Emotion</h3>
-                <p>{this.state.emotion}</p>
-                <div className="emotionList">
-                {this.state.values.map( emotions => {
-                    return(
-                        <p className="emotionListItem">{emotions[0]} = {Math.round(emotions[1] * 100)}%</p>
-                    )
-                })}
-                </div>
+                { toggleIsHidden
+                    ? <div className="emotionSummary"><p>{this.state.emotion}</p></div> 
+                    : <div className="emotionList">{this.state.values.map(emotions => {return (<p className="emotionListItem">{emotions[0]} = {Math.round(emotions[1] * 100)}%</p>)})}</div> 
+                }
             </div>
         );
     }

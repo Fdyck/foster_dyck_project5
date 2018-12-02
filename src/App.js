@@ -70,6 +70,7 @@ class App extends Component {
                   ? <Mention userInput={this.state.userInput} />
                   : <p className="visuallyhidden">No mention notifications</p>
                 }
+                
               </div>)
               : <div className="visuallyhidden"></div>  
         }
@@ -85,14 +86,14 @@ export default App;
 
 //RENAME CSS PARTIALS BECAUSE EVERYTHING IS IN GLOBAL OR SEPERATE INTO PROPER PARTIALS
 
+//STLYE LIKE A TWEET PAGE WITH THE EMOTION AND SENTIMENT MAKING NEW TWEET REPLIES WITH ANOTHER REPLY WHEN YOU CLICK ON THEM?
+
 //RETURN BUTTON THAT RESETS THE STATES
 
 //Write a function for the axios call that you can just pass paramaters to and then feed into each component to make code a lot more DRY.
 
-// FIGURE OUT HOW TO NEST THE showSentiment CALL
+//HOVER STATE THAT PROMPTS WHAT THE CLICK DOES ON DIV
 
-// MAKE A CLICKABLE PART OF COMPONENT TO SEE THE DRILLED DOWN DATA
-
-//MAKE SURE THAT CHROME IS WORKING, GETTING SOME SORT OF ERROR I DO NOT GET ON FIREFOX
+//MAKE SURE THAT CHROME IS WORKING, GETTING SOME SORT OF ERROR I DO NOT GET ON FIREFOX WITH THE ALERTS
 
 //LOAD SCREEN

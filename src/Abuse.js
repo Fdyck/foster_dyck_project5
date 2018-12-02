@@ -53,7 +53,7 @@ class Abuse extends Component {
                     ? <div><img className="abuseAlert" onClick={this.toggleHidden} src={AbuseAlert} />
                     { toggleIsHidden 
                         ? <p className="hide"></p>
-                        : <p>{this.state.confidence}% chance of abusive.</p>
+                        : <p>{this.state.confidence}% chance of abusive language.</p>
                     }
                     </div>
                     : <p className="visuallyhidden">{this.state.confidence}% sure this statement is not abusive.</p>

@@ -196,10 +196,10 @@ form {
     text-align: center;
     width: 70%;
     min-width: 20rem;
-    padding: 10%;
+    padding: 10% 7% 5% 7%;
     overflow: wrap;
     resize: none;
-    margin: 3rem 0;
+    margin: 5rem 0;
     border: none;
     background: navajowhite;
     border-radius: 50%; }
@@ -220,21 +220,27 @@ form {
     min-width: 61%;
     overflow: wrap;
     margin: 10% auto; }
+  .results div {
+    cursor: pointer; }
 
 .userInput {
   text-align: center; }
 
 .Sentiment {
   margin-right: 1rem;
-  width: calc(40% - 1rem);
+  width: calc(50% - 1rem);
   background: navajowhite;
   margin-bottom: 2rem;
   padding: 0 1rem;
   min-height: 40%; }
+  .Sentiment .sentimentList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
 
 .Emotion {
   margin-left: 1rem;
-  width: calc(60% - 1rem);
+  width: calc(50% - 1rem);
   background: rebeccapurple;
   margin-bottom: 2rem;
   padding: 0 1rem;
@@ -244,6 +250,8 @@ form {
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%; }
+    .Emotion .emotionListItem {
+      width: 33%; }
 
 .Abuse div {
   position: absolute;
@@ -253,23 +261,29 @@ form {
 
 .Mention div {
   position: absolute;
-  text-align: left;
   right: 5%;
-  top: 5%; }
+  top: 5%;
+  width: 200px; }
 
 .abuseAlert {
   cursor: pointer;
-  filter: hue-rotate(90deg) drop-shadow(0rem 0rem 2rem red);
+  filter: hue-rotate(90deg);
+  transform: scale(0.75);
   animation: alert 1s linear infinite; }
+  .abuseAlert:hover {
+    filter: hue-rotate(90deg) drop-shadow(0rem 0rem 2rem red); }
 
 .mentionAlert {
   cursor: pointer;
+  transform: scale(0.75);
   animation: alert 1s linear infinite; }
+  .mentionAlert:hover {
+    filter: drop-shadow(0rem 0rem 2rem #7bc2da); }
 
 @keyframes alert {
   0% {
     transform: scale(0.75); }
   50% {
-    transform: scale(1); }
+    transform: scale(0.65); }
   100% {
     transform: scale(0.75); } }
