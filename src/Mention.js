@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import MentionAlert from './assets/students.png'
 
 
 class Mention extends Component {
@@ -10,6 +11,7 @@ class Mention extends Component {
             name: "",
             category: "",
             userInput: this.props.userInput,
+            isHidden: false,
         }
     }
     componentDidMount() {
@@ -35,13 +37,25 @@ class Mention extends Component {
             })
         })
     }
+    toggleHidden = () => {
+
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
     render() {
         //THIS ALLOWS ME TO NOT SHOW ONE STATEMENT UNLESS THERE IS AN IDENTIFIED NAME
         const toggleAlert = this.state.category === "name";
+        const toggleIsHidden = this.state.isHidden === false
         return (
             <div className="Mention">
-                { toggleAlert
-                    ? <div className="mentionAlert"><h3>Mention alert.</h3><p>You seem to mention {this.state.name} if they have twitter you should think about tagging them.</p></div>
+                {toggleAlert 
+                    ? <div><img className="mentionAlert" onClick={this.toggleHidden} src={MentionAlert} />
+                    { toggleIsHidden 
+                        ? <p className="hide"></p>
+                        : <p>You seem to mention {this.state.name}, think about tagging them</p>
+                    }
+                    </div>
                     : <p className="visuallyhidden">No incorrect mentions indetified</p>
                 }
             </div>

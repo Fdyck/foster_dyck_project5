@@ -42,13 +42,13 @@ class Emotion extends Component {
             <div className="Emotion">
                 <h3>Emotion</h3>
                 <p>{this.state.emotion}</p>
+                <div className="emotionList">
                 {this.state.values.map( emotions => {
                     return(
-                        <p>{emotions[0]} = {Math.round(emotions[1] * 100)}%</p>
+                        <p className="emotionListItem">{emotions[0]} = {Math.round(emotions[1] * 100)}%</p>
                     )
                 })}
-                
-
+                </div>
             </div>
         );
     }

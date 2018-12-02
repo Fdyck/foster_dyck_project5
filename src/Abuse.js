@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AbuseAlert from './assets/errorAlternate.png'
 
 
 class Abuse extends Component {
@@ -10,6 +11,7 @@ class Abuse extends Component {
             abuse: "",
             confidence_score: "",
             userInput: this.props.userInput,
+            isHidden: false,
     }
 }
     componentDidMount() {
@@ -36,12 +38,24 @@ class Abuse extends Component {
             })
         })
     }
+    toggleHidden = () => {
+
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
     render() {
         const toggleAlert = this.state.abuse === "Abusive"
+        const toggleIsHidden = this.state.isHidden === false
         return (
             <div className="Abuse">
-                { toggleAlert 
-                    ? <div className="abuseAlert"><h3>Abuse alert</h3><p>We are {this.state.confidence}% sure that this statement is abusive.</p></div>
+                {toggleAlert
+                    ? <div><img className="abuseAlert" onClick={this.toggleHidden} src={AbuseAlert} />
+                    { toggleIsHidden 
+                        ? <p className="hide"></p>
+                        : <p>{this.state.confidence}% chance of abusive.</p>
+                    }
+                    </div>
                     : <p className="visuallyhidden">{this.state.confidence}% sure this statement is not abusive.</p>
                 }
             </div>

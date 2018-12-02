@@ -31,41 +31,48 @@ class App extends Component {
       this.setState({
         userInput: userInput,
         tweet: '',
-      })
-    }
+      }) 
+    } 
   }
   render() {
     //PART OF THE PASSING OF THE USER INPUT TO THE COMPONENTS, NOT WORKING AND USING SENTIMENT AS THE EXAMPLE
     const showResults = this.state.userInput !== "";
+    const hideForm = this.state.userInput === "";
     return (
       <div className="App">
         <div className="wrapper">
-        <h1>Check yourself...</h1>
-          <form action="submit">
-            <label htmlFor="addTweet" className="visuallyhidden">Enter your tweet here</label>
-            <textarea onChange={this.handleChange} name="tweet" type="text" id="addTweet" />
-            <input onClick={this.showAnalysis} type="submit" value="Check yourself before you..." />
-          </form>
+      { hideForm 
+            ? (<form className="searchForm" action="submit" autocomplete="off">
+              <h1>Check yourself...</h1>
+              <label htmlFor="addTweet" className="visuallyhidden">Enter your tweet here</label>
+              <textarea onChange={this.handleChange} name="tweet" type="text" id="addTweet" col="10" rows="4"/>
+              <input onClick={this.showAnalysis} type="submit" value="Check yourself before you..." />
+            </form>)
+            : <form className="visuallyhidden"></form>
+      }
   {/* //PART OF THE PASSING OF THE USER INPUT TO THE COMPONENTS, NOT WORKING AND USING SENTIMENT AS THE EXAMPLE */}
-          <div className="results">
-          <h2 className="userInput">{this.state.userInput}</h2>
-            {showResults
-              ? <Abuse userInput={this.state.userInput} />
-              : <p className="visuallyhidden">No abuse detected</p>
-            }
-            { showResults 
-              ? <Sentiment userInput={this.state.userInput}/>
-              : <p className="visuallyhidden">no sentiment data</p>
-            }
-            { showResults
-              ? <Emotion userInput={this.state.userInput}/>
-              : <p className="visuallyhidden">No emotion data</p>
-            }
-            {showResults
-              ? <Mention userInput={this.state.userInput} />
-              : <p className="visuallyhidden">No mention notifications</p>
-            }
-          </div>
+        { showResults 
+              ? (<div className="results">
+                <h2 className="userInput">{this.state.userInput}</h2>
+                {showResults
+                  ? <Sentiment userInput={this.state.userInput} />
+                  : <p className="visuallyhidden">no sentiment data</p>
+                }
+                {showResults
+                  ? <Emotion userInput={this.state.userInput} />
+                  : <p className="visuallyhidden">No emotion data</p>
+                }
+                {showResults
+                  ? <Abuse userInput={this.state.userInput} />
+                  : <p className="visuallyhidden">No abuse detected</p>
+                }
+                {showResults
+                  ? <Mention userInput={this.state.userInput} />
+                  : <p className="visuallyhidden">No mention notifications</p>
+                }
+              </div>)
+              : <div className="visuallyhidden"></div>  
+        }
         </div>
       </div>
     );
@@ -76,9 +83,9 @@ export default App;
 
 //NOTES 
 
-//MIGHT BE BEST TO HAVE THE FORM COMPLETELY BE REPLACED BY RESULTS THEN HAVE A BUTTON TO RETURN YOU, toggle display none class on the stuff I want to hide?
-
 //RENAME CSS PARTIALS BECAUSE EVERYTHING IS IN GLOBAL OR SEPERATE INTO PROPER PARTIALS
+
+//RETURN BUTTON THAT RESETS THE STATES
 
 //Write a function for the axios call that you can just pass paramaters to and then feed into each component to make code a lot more DRY.
 
@@ -86,6 +93,6 @@ export default App;
 
 // MAKE A CLICKABLE PART OF COMPONENT TO SEE THE DRILLED DOWN DATA
 
-//IF BOTH MENTION ALERT AND ABUSE ALERT GO OFF THEN LOAD A DIFFERENT ASSULT ALERT?
+//MAKE SURE THAT CHROME IS WORKING, GETTING SOME SORT OF ERROR I DO NOT GET ON FIREFOX
 
 //LOAD SCREEN
