@@ -5,6 +5,7 @@ import Emotion from './Emotion.js';
 import Abuse from './Abuse.js';
 import Mention from './Mention.js';
 import CheckYourselfProfile from './assets/checkYourselfProfile.jpg';
+import { Animated } from "react-animated-css";
 
 //Then I need to give you an option to change the tweet or start fresh
 
@@ -56,8 +57,8 @@ class App extends Component {
         <div className="wrapper">
       { hideForm 
             ? (<div className="search">
-                <form className="searchForm" action="submit" autocomplete="off">
-                <img src={CheckYourselfProfile} alt="Profile Picture of 'Check yourself'"/>
+              <Animated animationIn="zoomInDown" className="homeAnimation"><form className="searchForm" action="submit">
+                <img src={CheckYourselfProfile} alt="Profile of 'Check yourself'"/>
                 <div className="searchProfileName">
                   <h1>Check yourself</h1>
                   <p className="italic">@Check_Urself</p>
@@ -66,28 +67,29 @@ class App extends Component {
                 <textarea onChange={this.handleChange} name="tweet" type="text" id="addTweet" col="10" rows="4" placeholder="This is where you put your tweet..."/>
                 <h2 className="italic">...before this tweet wreck yourself.</h2>
                 <input onClick={this.showAnalysis} type="submit" value="Tweet" />
-              </form></div>)
+              </form></Animated></div>)
             : <form className="visuallyhidden"></form>
       }
   {/* //PART OF THE PASSING OF THE USER INPUT TO THE COMPONENTS, NOT WORKING AND USING SENTIMENT AS THE EXAMPLE */}
         { showResults 
-            ? (<div className="results">
-                  <div className="resultsTitleBackground">
-                      <img src={CheckYourselfProfile} alt="Profile Picture of 'Check yourself'" />
+            ? (<div className="results">            
+              <Animated className="resultsTitleBackground" animationIn="zoomInDown">
+                      <img src={CheckYourselfProfile} alt="Profile of 'Check yourself'" />
                       <div className="resultsProfileName">
                         <h1>Check yourself</h1>
                         <p className="italic">@Check_Urself</p>
                       </div>
-                        <p className="userInput">"{this.state.userInput}"</p>
+                        <p className="userInput">"{this.state.userInput}"</p> 
                         {showResults
-                          ? <Abuse userInput={this.state.userInput} />
+                          ?<Abuse userInput={this.state.userInput} />
                           : <p className="visuallyhidden">No abuse detected</p>
                         }
                         {showResults
                           ? <Mention userInput={this.state.userInput} />
                           : <p className="visuallyhidden">No mention notifications</p>
                         }
-                  </div>
+                  </Animated>
+                                   
                 {showResults
                   ? <Sentiment userInput={this.state.userInput} />
                   : <p className="visuallyhidden">no sentiment data</p>
@@ -97,7 +99,7 @@ class App extends Component {
                   : <p className="visuallyhidden">No emotion data</p>
                 }
                 
-                <button onClick={this.returnHome}>New Tweet</button>
+              <Animated className="returnButton"animationIn="zoomInUp"><button onClick={this.returnHome}>New Tweet</button></Animated>
               </div>)
               : <div className="visuallyhidden"></div>  
         }
@@ -109,12 +111,10 @@ class App extends Component {
 
 export default App;
 
-//NOTES 
+//NOTES FOR PORTFOLIO
 
-// MOBILE RESIZING!! 
+//MAKE THE RESULTS LOOK LIKE A REAL TWITTER FEED AND THE BREAKDOWNS COME DOWN AS NEW TWEETS
 
-//IF THERE IS TIME PUT IN THE ANIMATIONS FROM ANIMATION.CSS, DIDNT WORK WHEN I TRIED
-
-//MAKE SURE THAT CHROME IS WORKING, GETTING SOME SORT OF ERROR I DO NOT GET ON FIREFOX WITH THE ALERTS
+//CLEAN UP THE CODE, TURN THE AXIOS AND OTHER RE USED FUNCTIONS INTO PEICES I CAN PASS DOWN. MY STYLING SHOULD BE CLEANED UP AS WELL SO IT IS READABLE
 
 //LOAD SCREEN

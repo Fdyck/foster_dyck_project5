@@ -203,6 +203,10 @@ img {
 .italic {
   font-style: italic; }
 
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%; } }
+
 .search {
   height: 100vh;
   padding-top: 20vh; }
@@ -245,12 +249,21 @@ img {
       border-radius: 10px;
       margin-right: 5%; }
 
+@media (max-width: 600px) {
+  .search {
+    padding: 5%; }
+    .search .homeAnimation {
+      height: 100%; }
+    .search .searchForm {
+      height: 100%; } }
+
 .results {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   width: 100%; }
   .results .resultsTitleBackground {
     border-radius: 10px;
@@ -277,14 +290,17 @@ img {
       overflow: wrap;
       padding: 2.5% 0;
       font-size: 3rem; }
+  .results .resultsContainer {
+    width: 45%;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    min-height: 50%; }
   .results .resultsBox {
-    width: 47.5%;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
     background: #FFF;
-    margin-bottom: 2rem;
-    padding: 2%;
-    min-height: 32%;
-    cursor: pointer; }
+    padding: 2%; }
     .results .resultsBox:hover {
       box-shadow: 5px 5px 5px #808080; }
     .results .resultsBox .resultsCopy {
@@ -333,13 +349,14 @@ img {
       animation: alert 1s linear infinite; }
       .results .alertButton .mentionAlert:hover {
         filter: drop-shadow(0rem 0rem 2rem #7bc2da); }
-  .results button {
-    border-radius: 10px;
-    background: #FFF;
-    text-align: center;
-    margin: 0 auto;
-    width: 15rem;
-    min-height: 5vh; }
+  .results .returnButton {
+    margin: 0 auto; }
+    .results .returnButton button {
+      border-radius: 10px;
+      background: #FFF;
+      margin: 0 auto;
+      width: 15rem;
+      min-height: 5vh; }
   .results .listCopy {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
@@ -360,3 +377,11 @@ img {
     transform: scale(0.65); }
   100% {
     transform: scale(0.75); } }
+
+@media (max-width: 600px) {
+  .results {
+    padding: 5%; }
+    .results .resultsTitleBackground {
+      min-height: 40vh; }
+    .results .resultsContainer {
+      width: 100%; } }

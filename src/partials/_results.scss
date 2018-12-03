@@ -3,7 +3,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     width: 100%;
 
     .resultsTitleBackground {
@@ -42,14 +43,19 @@
         }
     }
 
+.resultsContainer {
+    width: 45%;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    min-height: 50%;
+}
+
     .resultsBox {
-        width: 47.5%;
+        height: 100%;
+        width: 100%;
         border-radius: 10px;
         background: $lightShade;
-        margin-bottom: 2rem;
         padding: 2%;
-        min-height: 32%;
-        cursor: pointer;
 
         &:hover {
             box-shadow: 5px 5px 5px $greyShade;
@@ -112,7 +118,6 @@
         .abuseAlertImg {
             cursor: pointer;  
             filter: hue-rotate(90deg);
-            // margin: 0 auto;
             transform: scale(0.75);
             animation: alert 1s linear infinite;
             
@@ -132,13 +137,16 @@
         }
     }    
 
-    button {
-        border-radius: 10px;
-        background: $lightShade;
-        text-align: center;
+    .returnButton {
         margin: 0 auto;
-        width: 15rem;
-        min-height: 5vh;
+
+        button {
+            border-radius: 10px;
+            background: $lightShade;
+            margin: 0 auto;
+            width: 15rem;
+            min-height: 5vh;
+        }
     }
 
     .listCopy {
@@ -165,4 +173,18 @@
     0%    { transform: scale(0.75); }
     50%  { transform: scale(0.65); }
     100% { transform: scale(0.75); }
+}
+
+@media (max-width: 600px) {
+    .results{
+        padding: 5%;
+
+        .resultsTitleBackground {
+            min-height: 40vh;
+        }
+
+        .resultsContainer {
+            width: 100%;
+        }
+    }
 }

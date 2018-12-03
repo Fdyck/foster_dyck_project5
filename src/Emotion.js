@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EmotionalEddie from './assets/emotionalEddy.jpg';
+import { Animated } from "react-animated-css";
 
 
 class Emotion extends Component {
@@ -48,9 +49,10 @@ class Emotion extends Component {
     render() {
         const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Emotion resultsBox" onClick={this.toggleHidden}>
+            <div onClick={this.toggleHidden} className="resultsContainer">
+                <Animated className="Emotion resultsBox" animationIn="zoomInRight">
                 <div className="resultSummary">
-                    <img src={EmotionalEddie} alt="Profile Picture of 'Check yourself'" />
+                    <img src={EmotionalEddie} alt="Profile of 'Emotional Eddie'" />
                     <div className="resultsTitle">
                         <h2>Eddy Emotions</h2>
                         <p className="italic">@Emotional_Eddie</p>
@@ -70,6 +72,7 @@ class Emotion extends Component {
                         )})}
                     </div> 
                 }
+                </Animated>
             </div>
         );
     }

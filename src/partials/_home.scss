@@ -53,5 +53,18 @@
             margin-right: 5%;
         }
     }
+}
 
+@media (max-width: 600px) {
+    .search {
+        padding: 5%;
+
+        .homeAnimation {
+            height: 100%;
+        }
+        
+        .searchForm {
+            height: 100%;
+        }
+    }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SusanSentiment from './assets/susan.jpg';
+import { Animated } from "react-animated-css";
+
 
 
 class Sentiment extends Component {
@@ -51,9 +53,10 @@ class Sentiment extends Component {
     render() {
         const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Sentiment resultsBox" onClick={this.toggleHidden}>
+            <div  onClick={this.toggleHidden} className="resultsContainer">
+                <Animated className="Sentiment resultsBox" animationIn="zoomInLeft">
                 <div className="resultSummary sentimentSummary">
-                    <img src={SusanSentiment} alt="Profile Picture of 'Check yourself'" />
+                    <img src={SusanSentiment} alt="Profile of 'Sally Sentiment'" />
                     <div className="resultsTitle">
                         <h2>Susan Sentiment</h2>
                         <p className="italic">@Sussy_Senti</p>
@@ -73,6 +76,7 @@ class Sentiment extends Component {
                         </div>
                     </div>
                 }  
+                </Animated>
             </div>
         );
     }
