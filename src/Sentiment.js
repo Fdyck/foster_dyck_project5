@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SusanSentiment from './assets/susan.jpg';
 
 
 class Sentiment extends Component {
@@ -50,11 +51,27 @@ class Sentiment extends Component {
     render() {
         const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Sentiment" onClick={this.toggleHidden}>
-                <h3>Sentiment</h3>
+            <div className="Sentiment resultsBox" onClick={this.toggleHidden}>
+                <div className="resultSummary sentimentSummary">
+                    <img src={SusanSentiment} alt="Profile Picture of 'Check yourself'" />
+                    <div className="resultsTitle">
+                        <h2>Susan Sentiment</h2>
+                        <p className="italic">@Sussy_Senti</p>
+                    </div>
+                </div>
                 { toggleIsHidden 
-                    ? <div className="sentimentSummary"><p>{this.state.sentiment}</p></div>
-                    : <div className="sentimentList"><p>Your tweet is {Math.round(this.state.values.neutral * 100)}% neutral.</p><p>Your tweet is {Math.round(this.state.values.positive * 100)}% positive.</p><p>Your tweet is {Math.round(this.state.values.negative * 100)}% negative.</p></div>
+                    ? <div className="resultsContent">
+                        <p className="resultsCopy">I must say, that seems pretty <span className="bold">{this.state.sentiment}</span> of you to say!</p>
+                        <p className="italic resultsDesc">... and I should know, I am a excellent judge of sentiment!</p>
+                    </div>
+                    : <div className="sentimentList">
+                        <div className="sentimentListItems">
+                            <p className="listCopy">Sentiment breakdown: </p>
+                            <p class="listItem">{Math.round(this.state.values.neutral * 100)}% neutral</p>
+                            <p class="listItem">{Math.round(this.state.values.positive * 100)}% positive</p> 
+                            <p class="listItem">{Math.round(this.state.values.negative * 100)}% negative</p>
+                        </div>
+                    </div>
                 }  
             </div>
         );

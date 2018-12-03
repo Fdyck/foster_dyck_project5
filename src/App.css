@@ -169,7 +169,9 @@ html {
   font-size: 62.5%; }
 
 .App {
-  position: relative; }
+  position: relative;
+  background: #1DA1F2;
+  font-family: "Frank Ruhl Libre", serif; }
 
 .wrapper {
   width: 80%;
@@ -177,108 +179,179 @@ html {
   margin: 0 auto;
   font-size: 2rem; }
 
-h1 {
-  text-align: center;
-  align-self: center;
-  margin: 0; }
-
 .hide {
   display: none; }
 
-form {
-  text-align: center;
+h1, h2, h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.5rem;
+  text-transform: capitalize; }
+
+h2, h3 {
+  font-size: 2.5rem; }
+
+p {
+  margin: 0; }
+
+img {
+  display: block; }
+
+.bold {
+  font-weight: bold; }
+
+.italic {
+  font-style: italic; }
+
+.search {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-  form textarea {
-    text-align: center;
-    width: 70%;
-    min-width: 20rem;
-    padding: 10% 7% 5% 7%;
-    overflow: wrap;
-    resize: none;
-    margin: 5rem 0;
-    border: none;
-    background: navajowhite;
-    border-radius: 50%; }
-  form input[type="submit"] {
-    width: 35%;
-    min-width: 20rem;
-    min-height: 5vh; }
+  padding-top: 20vh; }
+  .search .searchForm {
+    border-radius: 10px;
+    width: 100%;
+    background: #FFF;
+    padding: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; }
+    .search .searchForm img {
+      border-radius: 50%;
+      height: 75px;
+      width: 75px; }
+    .search .searchForm .searchProfileName {
+      width: calc(98% - 75px);
+      font-weight: bold; }
+      .search .searchForm .searchProfileName p {
+        font-weight: normal; }
+    .search .searchForm textarea {
+      overflow: wrap;
+      resize: none;
+      box-shadow: -1px 1px 10px 1px #1DA1F2;
+      width: 95%;
+      height: 50%;
+      border: none;
+      border-radius: 10px;
+      margin: 4%;
+      padding: 2rem; }
+    .search .searchForm h2 {
+      width: 70%;
+      padding-left: 5%; }
+    .search .searchForm input[type="submit"] {
+      width: 11rem;
+      min-height: 5vh;
+      background: #1DA1F2;
+      color: white;
+      border-radius: 10px;
+      margin-right: 5%; }
 
 .results {
   display: flex;
-  height: 100vh;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  text-align: center;
+  height: 100vh;
   width: 100%; }
-  .results h2 {
-    min-width: 61%;
-    overflow: wrap;
-    margin: 10% auto; }
-  .results div {
-    cursor: pointer; }
-
-.userInput {
-  text-align: center; }
-
-.Sentiment {
-  margin-right: 1rem;
-  width: calc(50% - 1rem);
-  background: navajowhite;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-  min-height: 40%; }
-  .Sentiment .sentimentList {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly; }
-
-.Emotion {
-  margin-left: 1rem;
-  width: calc(50% - 1rem);
-  background: rebeccapurple;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-  min-height: 40%; }
-  .Emotion .emotionList {
+  .results .resultsTitleBackground {
+    border-radius: 10px;
+    width: 100%;
+    background: #FFF;
+    margin: 5% 0 2.5% 0;
+    padding: 4%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%; }
-    .Emotion .emotionListItem {
-      width: 33%; }
-
-.Abuse div {
-  position: absolute;
-  left: 5%;
-  top: 5%;
-  width: 200px; }
-
-.Mention div {
-  position: absolute;
-  right: 5%;
-  top: 5%;
-  width: 200px; }
-
-.abuseAlert {
-  cursor: pointer;
-  filter: hue-rotate(90deg);
-  transform: scale(0.75);
-  animation: alert 1s linear infinite; }
-  .abuseAlert:hover {
-    filter: hue-rotate(90deg) drop-shadow(0rem 0rem 2rem red); }
-
-.mentionAlert {
-  cursor: pointer;
-  transform: scale(0.75);
-  animation: alert 1s linear infinite; }
-  .mentionAlert:hover {
-    filter: drop-shadow(0rem 0rem 2rem #7bc2da); }
+    justify-content: space-between;
+    align-items: center; }
+    .results .resultsTitleBackground img {
+      border-radius: 50%;
+      height: 75px;
+      width: 75px; }
+    .results .resultsTitleBackground .resultsProfileName {
+      width: calc(98% - 75px); }
+      .results .resultsTitleBackground .resultsProfileName P {
+        font-style: italic; }
+    .results .resultsTitleBackground .userInput {
+      width: 100%;
+      margin: 0 auto;
+      background: #FFF;
+      overflow: wrap;
+      padding: 2.5% 0;
+      font-size: 3rem; }
+  .results .resultsBox {
+    width: 47.5%;
+    border-radius: 10px;
+    background: #FFF;
+    margin-bottom: 2rem;
+    padding: 2%;
+    min-height: 32%;
+    cursor: pointer; }
+    .results .resultsBox:hover {
+      box-shadow: 5px 5px 5px #808080; }
+    .results .resultsBox .resultsCopy {
+      margin: 3rem 1rem; }
+    .results .resultsBox .resultsDesc {
+      font-size: 1.6rem; }
+    .results .resultsBox .resultSummary {
+      display: flex;
+      justify-content: space-between; }
+      .results .resultsBox .resultSummary .resultsTitle {
+        width: calc(98% - 50px);
+        align-self: center; }
+    .results .resultsBox .sentimentList {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; }
+      .results .resultsBox .sentimentListItems {
+        text-align: center; }
+    .results .resultsBox .emotionList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center; }
+      .results .resultsBox .emotionListItem {
+        width: 45%; }
+    .results .resultsBox img {
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      align-self: center; }
+  .results .alertButton {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 1.6rem; }
+    .results .alertButton .abuseAlertImg {
+      cursor: pointer;
+      filter: hue-rotate(90deg);
+      transform: scale(0.75);
+      animation: alert 1s linear infinite; }
+      .results .alertButton .abuseAlertImg:hover {
+        filter: hue-rotate(90deg) drop-shadow(0rem 0rem 2rem red); }
+    .results .alertButton .mentionAlert {
+      cursor: pointer;
+      transform: scale(0.75);
+      animation: alert 1s linear infinite; }
+      .results .alertButton .mentionAlert:hover {
+        filter: drop-shadow(0rem 0rem 2rem #7bc2da); }
+  .results button {
+    border-radius: 10px;
+    background: #FFF;
+    text-align: center;
+    margin: 0 auto;
+    width: 15rem;
+    min-height: 5vh; }
+  .results .listCopy {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    text-transform: capitalize;
+    width: 100%;
+    border-top: solid 2px #1DA1F2; }
+  .results .listItem {
+    margin: 0.5rem 0; }
+    .results .listItem:last-child {
+      width: 100%; }
 
 @keyframes alert {
   0% {

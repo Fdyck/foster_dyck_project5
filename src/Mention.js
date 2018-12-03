@@ -50,11 +50,12 @@ class Mention extends Component {
         return (
             <div className="Mention">
                 {toggleAlert 
-                    ? <div><img className="mentionAlert" onClick={this.toggleHidden} src={MentionAlert} />
-                    { toggleIsHidden 
-                        ? <p className="hide"></p>
-                        : <p>You seem to mention {this.state.name}, think about tagging them</p>
-                    }
+                    ? <div className="alertButton">
+                        { toggleIsHidden 
+                            ? <p className="hide"></p>
+                            : <p>Think about tagging {this.state.name} - </p>
+                        }
+                        <img className="mentionAlert" onClick={this.toggleHidden} src={MentionAlert} alt="Mentions may have been detected"/>
                     </div>
                     : <p className="visuallyhidden">No incorrect mentions indetified</p>
                 }

@@ -1,0 +1,168 @@
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
+
+    .resultsTitleBackground {
+        border-radius: 10px;
+        width: 100%;
+        background: $lightShade;
+        margin: 5% 0 2.5% 0;
+        padding: 4%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            border-radius: 50%;
+            height: 75px;
+            width: 75px;
+        }
+
+        .resultsProfileName {
+            width: calc(98% - 75px);
+
+            P {
+                font-style: italic;
+            }
+        }
+
+        .userInput {
+            width: 100%;
+            margin: 0 auto;
+            background: $lightShade;
+            overflow: wrap;
+            padding: 2.5% 0;
+            font-size: 3rem;
+        
+        }
+    }
+
+    .resultsBox {
+        width: 47.5%;
+        border-radius: 10px;
+        background: $lightShade;
+        margin-bottom: 2rem;
+        padding: 2%;
+        min-height: 32%;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 5px 5px 5px $greyShade;
+        }
+
+        .resultsCopy {
+            margin: 3rem 1rem;
+        }
+
+        .resultsDesc {
+            font-size: 1.6rem;
+        }
+
+        .resultSummary {
+            display: flex;
+            justify-content: space-between;
+
+            .resultsTitle {
+                width: calc(98% - 50px);
+                align-self: center;
+            }
+
+        }
+
+        .sentimentList {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            &Items {
+                text-align: center;
+            }
+        }
+
+        .emotionList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+
+            &Item {
+                width: 45%;
+            }
+        }
+        
+        img {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            align-self: center;
+        }
+    }
+        
+    .alertButton {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        font-size: 1.6rem;
+
+        .abuseAlertImg {
+            cursor: pointer;  
+            filter: hue-rotate(90deg);
+            // margin: 0 auto;
+            transform: scale(0.75);
+            animation: alert 1s linear infinite;
+            
+            &:hover {
+                filter: hue-rotate(90deg) drop-shadow(0rem 0rem 2rem red);
+            }
+        }
+
+        .mentionAlert {
+            cursor: pointer;
+            transform: scale(0.75);
+            animation: alert 1s linear infinite;
+        
+            &:hover {
+                filter: drop-shadow(0rem 0rem 2rem rgb(123, 194, 218));
+            }
+        }
+    }    
+
+    button {
+        border-radius: 10px;
+        background: $lightShade;
+        text-align: center;
+        margin: 0 auto;
+        width: 15rem;
+        min-height: 5vh;
+    }
+
+    .listCopy {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        text-transform: capitalize;
+        width: 100%;
+        border-top: solid 2px $accentShade;
+    }
+
+    .listItem {
+        margin: 0.5rem 0;
+
+        &:last-child {
+            width: 100%;
+        }
+    }
+}
+
+
+@keyframes alert {
+    0%    { transform: scale(0.75); }
+    50%  { transform: scale(0.65); }
+    100% { transform: scale(0.75); }
+}

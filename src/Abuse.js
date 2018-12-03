@@ -48,12 +48,13 @@ class Abuse extends Component {
         const toggleAlert = this.state.abuse === "Abusive"
         const toggleIsHidden = this.state.isHidden === false
         return (
-            <div className="Abuse">
+            <div className="Abuse alert">
                 {toggleAlert
-                    ? <div><img className="abuseAlert" onClick={this.toggleHidden} src={AbuseAlert} />
-                    { toggleIsHidden 
+                    ? <div className="alertButton">
+                    <img className="abuseAlertImg" onClick={this.toggleHidden} src={AbuseAlert} alt="Abuse may have been detected"/>
+                    {toggleIsHidden
                         ? <p className="hide"></p>
-                        : <p>{this.state.confidence}% chance of abusive language.</p>
+                        : <p> - {this.state.confidence}% chance of abusive language</p>
                     }
                     </div>
                     : <p className="visuallyhidden">{this.state.confidence}% sure this statement is not abusive.</p>

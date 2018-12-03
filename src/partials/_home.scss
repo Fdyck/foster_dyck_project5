@@ -1,0 +1,57 @@
+.search {
+    height: 100vh;
+    padding-top: 20vh;
+
+    .searchForm {
+        border-radius: 10px;
+        width: 100%;
+        background: $lightShade;
+        padding: 4%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        
+        img {
+            border-radius: 50%;
+            height: 75px;
+            width: 75px;
+        }
+
+        .searchProfileName {
+            width: calc(98% - 75px);
+            font-weight: bold;
+
+            p {
+                font-weight: normal;
+            }
+        }
+        
+        textarea {
+            overflow: wrap;
+            resize: none;
+            box-shadow: -1px 1px 10px 1px $accentShade;
+            width: 95%;
+            height: 50%;
+            border: none;
+            border-radius: 10px;
+            margin: 4%;
+            padding: 2rem;
+        }
+        
+        h2 {
+            width: 70%;
+            padding-left: 5%;
+        }
+
+        input[type="submit"] {
+            width: 11rem;
+            min-height: 5vh;
+            background: $accentShade;
+            color: white;
+            border-radius: 10px;
+            margin-right: 5%;
+        }
+    }
+
+}
