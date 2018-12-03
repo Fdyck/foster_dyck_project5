@@ -59,7 +59,7 @@ class Sentiment extends Component {
                     <img src={SusanSentiment} alt="Profile of 'Sally Sentiment'" />
                     <div className="resultsTitle">
                         <h2>Susan Sentiment</h2>
-                        <p className="italic">@Sussy_Senti</p>
+                        <p className="italic">@Susie_Senti</p>
                     </div>
                 </div>
                 { toggleIsHidden 
