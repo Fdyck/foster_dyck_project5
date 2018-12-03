@@ -294,8 +294,9 @@ img {
     width: 45%;
     cursor: pointer;
     margin-bottom: 2rem;
-    min-height: 50%; }
+    height: 100%; }
   .results .resultsBox {
+    min-height: 220px;
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -382,6 +383,7 @@ img {
   .results {
     padding: 5%; }
     .results .resultsTitleBackground {
-      min-height: 40vh; }
+      min-height: 40vh;
+      margin: 5% 0; }
     .results .resultsContainer {
       width: 100%; } }

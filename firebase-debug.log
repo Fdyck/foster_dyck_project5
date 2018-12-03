@@ -1,0 +1,21 @@
+[debug] [2018-12-03T16:39:29.362Z] ----------------------------------------------------------------------
+[debug] [2018-12-03T16:39:29.365Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\fdyck\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2018-12-03T16:39:29.366Z] CLI Version:   6.1.1
+[debug] [2018-12-03T16:39:29.366Z] Platform:      win32
+[debug] [2018-12-03T16:39:29.366Z] Node Version:  v10.13.0
+[debug] [2018-12-03T16:39:29.367Z] Time:          Mon Dec 03 2018 11:39:29 GMT-0500 (Eastern Standard Time)
+[debug] [2018-12-03T16:39:29.367Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-03T16:39:29.381Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-03T16:39:29.383Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\fdyck\Desktop\HackerYou\hackeryou-bootcamp\Projects\foster_dyck_project5
+

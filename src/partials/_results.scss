@@ -47,16 +47,17 @@
     width: 45%;
     cursor: pointer;
     margin-bottom: 2rem;
-    min-height: 50%;
+    height: 100%;
 }
 
     .resultsBox {
+        min-height: 220px;
         height: 100%;
         width: 100%;
         border-radius: 10px;
         background: $lightShade;
         padding: 2%;
-
+        
         &:hover {
             box-shadow: 5px 5px 5px $greyShade;
         }
@@ -181,6 +182,7 @@
 
         .resultsTitleBackground {
             min-height: 40vh;
+            margin: 5% 0;
         }
 
         .resultsContainer {
